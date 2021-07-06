@@ -6,6 +6,7 @@ import { action } from "@storybook/addon-actions";
 import "index.scss";
 
 import Button from "components/Button";
+import DayListItem from "components/DayListItem";
 
 // Base uses no props and is considered the default button
 // Confirm uses the confirm prop to apply the .button--confirm modifier class
