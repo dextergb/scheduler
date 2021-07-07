@@ -11,6 +11,8 @@ import DayList from "components/DayList";
 import InterviewerListItem from "components/InterviewerListItem";
 import InterviewerList from "components/InterviewerList";
 
+import Appointment from "components/Appointment";
+
 // Base uses no props and is considered the default button
 // Confirm uses the confirm prop to apply the .button--confirm modifier class
 // Danger uses the danger prop to apply the .button--danger modifier class
@@ -132,3 +134,10 @@ storiesOf("InterviewerList", module)
       setInterviewer={action("setInterviewer")}
     />
   ));
+
+storiesOf("Appointment", module)
+  .addParameters({
+    backgrounds: [{ name: "white", value: "#fff", default: true }],
+  })
+  .add("Appointment", () => <Appointment />)
+  .add("Appointment with Time", () => <Appointment time="12pm" />);
