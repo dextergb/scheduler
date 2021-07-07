@@ -12,6 +12,7 @@ import InterviewerListItem from "components/InterviewerListItem";
 import InterviewerList from "components/InterviewerList";
 
 import Appointment from "components/Appointment";
+import Header from "components/Header";
 
 // Base uses no props and is considered the default button
 // Confirm uses the confirm prop to apply the .button--confirm modifier class
@@ -140,4 +141,5 @@ storiesOf("Appointment", module)
     backgrounds: [{ name: "white", value: "#fff", default: true }],
   })
   .add("Appointment", () => <Appointment />)
-  .add("Appointment with Time", () => <Appointment time="12pm" />);
+  .add("Appointment with Time", () => <Appointment time="12pm" />)
+  .add("Header", () => <Header time="12pm" />);
