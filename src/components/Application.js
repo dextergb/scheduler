@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import "components/Application.scss";
+import "components/Appointment";
 
 import DayList from "./DayList";
 
