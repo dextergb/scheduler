@@ -12,8 +12,8 @@ import InterviewerListItem from "components/InterviewerListItem";
 import InterviewerList from "components/InterviewerList";
 
 import Appointment from "components/Appointment";
-import Header from "components/Header";
-import Empty from "components/Empty";
+import Header from "components/Appointment/Header";
+import Empty from "components/Appointment/Empty";
 
 // Base uses no props and is considered the default button
 // Confirm uses the confirm prop to apply the .button--confirm modifier class
