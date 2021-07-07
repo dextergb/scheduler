@@ -4,6 +4,7 @@ import "components/Application.scss";
 import "components/Appointment";
 
 import DayList from "./DayList";
+import Appointment from "components/Appointment";
 
 const appointments = [
   {
@@ -72,6 +73,9 @@ const days = [
 
 export default function Application(props) {
   const [day, setDay] = useState("Monday");
+  const appointmentList = appointments.map((appointment) => (
+    <Appointment key="last" time="5pm" />
+  ));
   return (
     <main className="layout">
       <section className="sidebar">
@@ -90,9 +94,7 @@ export default function Application(props) {
           alt="Lighthouse Labs"
         />
       </section>
-      <section className="schedule">
-        {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
-      </section>
+      <section className="schedule">{appointmentList}</section>
     </main>
   );
 }
