@@ -55,20 +55,20 @@ const appointments = [
   },
 ];
 
-
 export default function Application(props) {
   const [day, setDay] = useState("Monday");
   const [days, setDays] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/days')
-  .then(function (response) {
-    console.log(response.data);
-    setDays([...response.data]);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
+    axios
+      .get("/api/days")
+      .then(function (response) {
+        console.log(response.data);
+        setDays([...response.data]);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }, []);
 
   const appointmentList = appointments.map((appointment) => (
