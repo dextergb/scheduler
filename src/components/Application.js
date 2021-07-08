@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import "components/Application.scss";
 import "components/Appointment";
 
 import DayList from "./DayList";
 import Appointment from "components/Appointment";
+
+const axios = require("axios");
 
 const appointments = [
   {
