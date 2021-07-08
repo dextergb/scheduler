@@ -61,6 +61,7 @@ export default function Application(props) {
         />
       </section>
       <section className="schedule">{appointmentList}</section>
+      <Appointment key="last" time="5pm" />
     </main>
   );
 }
