@@ -6,7 +6,11 @@ import "components/Appointment";
 import DayList from "./DayList";
 import Appointment from "components/Appointment";
 
-import { getAppointmentsForDay, getInterview } from "helpers/selectors";
+import {
+  getAppointmentsForDay,
+  getInterview,
+  getInterviewersForDay,
+} from "helpers/selectors";
 
 const axios = require("axios");
 
@@ -19,6 +23,7 @@ export default function Application(props) {
   });
 
   const appointments = getAppointmentsForDay(state, state.day);
+  const interviewersForDay = getInterviewersForDay(state, state.day);
   const setDay = (day) => setState({ ...state, day });
 
   useEffect(() => {
@@ -48,6 +53,7 @@ export default function Application(props) {
         id={appointment.id}
         time={appointment.time}
         interview={interview}
+        interviewers={interviewersForDay}
       />
     );
   });
