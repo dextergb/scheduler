@@ -23,14 +23,6 @@ export default function Application(props) {
   });
 
   function bookInterview(id, interview) {
-    console.log("interview: ", interview);
-    axios
-      .put(`/api/appointments/${id}`, {
-        interview,
-      })
-      .then((res) => console.log(res))
-      .catch((e) => console.log(e));
-
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview },
@@ -39,10 +31,29 @@ export default function Application(props) {
       ...state.appointments,
       [id]: appointment,
     };
-    setState({
-      ...state,
-      appointments,
-    });
+    return axios.put(`/api/appointments/${id}`, { interview }).then((res) =>
+      setState({
+        ...state,
+        appointments,
+      })
+    );
+  }
+
+  function cancelInterview(id) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: null,
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment,
+    };
+    return axios.delete(`/api/appointments/${id}`).then((res) =>
+      setState({
+        ...state,
+        appointments,
+      })
+    );
   }
 
   const appointments = getAppointmentsForDay(state, state.day);
@@ -77,7 +88,8 @@ export default function Application(props) {
         time={appointment.time}
         interview={interview}
         interviewers={interviewersForDay}
-        bookInterview={(id, interview) => bookInterview(id, interview)}
+        bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
       />
     );
   });
@@ -100,8 +112,10 @@ export default function Application(props) {
           alt="Lighthouse Labs"
         />
       </section>
-      <section className="schedule">{schedule}</section>
-      <Appointment key="last" time="5pm" />
+      <section className="schedule">
+        {schedule}
+        <Appointment key="last" time="5pm" />
+      </section>
     </main>
   );
 }
