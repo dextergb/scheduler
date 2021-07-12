@@ -1,6 +1,6 @@
 export function getAppointmentsForDay(state, day) {
   const selectedDay = state.days.find((d) => d.name === day);
-  if (!selectedDay) {
+  if (state.days.length === 0 || !selectedDay) {
     return [];
   }
   const appointments = selectedDay.appointments.map(
@@ -11,15 +11,21 @@ export function getAppointmentsForDay(state, day) {
 }
 
 export function getInterview(state, interview) {
-  if (!interview) return null;
+  if (interview === null) {
+    return null;
+  }
   const interviewObject = { ...interview };
-  interviewObject.interviewer = state.interviewers[interview.interviewer];
+  interviewObject.interviewer = {
+    ...state.interviewers[interview.interviewer],
+  };
   return interviewObject;
 }
 
 export function getInterviewersForDay(state, day) {
   const selectedDay = state.days.find((d) => d.name === day);
-  if (!selectedDay) return [];
+  if (state.days.length === 0 || !selectedDay) {
+    return [];
+  }
   const interviewers = selectedDay.interviewers.map(
     (interviewerID) => state.interviewers[interviewerID]
   );
