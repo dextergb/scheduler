@@ -32,17 +32,18 @@ export default function Appointment(props) {
       interviewer,
     };
     transition(SAVE);
-    props.bookInterview(props.id, interview);
-    setTimeout(function () {
-      transition(SHOW);
-    }, 1000);
+    props
+      .bookInterview(props.id, interview)
+      .then(() => transition(SHOW))
+      .catch((error) => transition(ERROR_SAVE, true));
   }
-  function deleteInterview() {
+
+  function destroy(event) {
     transition(DELETE, true);
-    props.cancelInterview(props.id);
-    setTimeout(function () {
-      transition(EMPTY);
-    }, 1000);
+    props
+      .cancelInterview(props.id)
+      .then(() => transition(EMPTY))
+      .catch((error) => transition(ERROR_DELETE, true));
   }
 
   return (
@@ -69,7 +70,7 @@ export default function Appointment(props) {
       {mode === CONFIRM && (
         <Confirm
           message="Are you sure you would like to delete?"
-          onConfirm={deleteInterview}
+          onConfirm={destroy}
           onCancel={back}
         />
       )}
@@ -80,6 +81,16 @@ export default function Appointment(props) {
           interviewer={props.interview.interviewer.id}
           onSave={(name, interviewer) => onSave(name, interviewer)}
           onCancel={() => back()}
+        />
+      )}
+      {(mode === ERROR_SAVE || mode === ERROR_DELETE) && (
+        <Error
+          message={
+            mode === ERROR_SAVE
+              ? "Could not save appointment"
+              : "Could not delete appointment"
+          }
+          onClose={back}
         />
       )}
     </article>
