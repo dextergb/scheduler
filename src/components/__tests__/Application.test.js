@@ -7,6 +7,7 @@ import {
   fireEvent,
   getByText,
   prettyDOM,
+  getAllByTestId,
 } from "@testing-library/react";
 
 import Application from "components/Application";
@@ -28,7 +29,7 @@ describe("Application", () => {
     const { container } = render(<Application />);
 
     await waitForElement(() => getByText(container, "Archie Cohen"));
-
-    console.log(prettyDOM(container));
+    const appointments = getAllByTestId(container, "appointment");
+    console.log(prettyDOM(appointments));
   });
 });
