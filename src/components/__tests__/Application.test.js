@@ -56,5 +56,11 @@ describe("Application", () => {
     );
 
     console.log(prettyDOM(day));
+
+    const day = getAllByTestId(container, "day").find((day) =>
+      queryByText(day, "Monday")
+    );
+
+    expect(getByText(day, "no spots remaining")).toBeInTheDocument();
   });
 });
