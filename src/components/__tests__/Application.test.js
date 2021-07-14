@@ -29,7 +29,13 @@ describe("Application", () => {
     const { container } = render(<Application />);
 
     await waitForElement(() => getByText(container, "Archie Cohen"));
+
+    console.log(prettyDOM(container));
+
     const appointments = getAllByTestId(container, "appointment");
     console.log(prettyDOM(appointments));
+
+    const appointment = getAllByTestId(container, "appointment")[0];
+    console.log(prettyDOM(appointment));
   });
 });
