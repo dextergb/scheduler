@@ -5,6 +5,7 @@ import {
   cleanup,
   waitForElement,
   fireEvent,
+  getByText,
 } from "@testing-library/react";
 
 import Application from "components/Application";
@@ -20,5 +21,10 @@ describe("Application", () => {
     fireEvent.click(getByText("Tuesday"));
 
     expect(getByText("Leopold Silvers")).toBeInTheDocument();
+  });
+
+  it("loads data, books an interview and reduces the spots remaining for Monday by 1", () => {
+    const { container } = render(<Application />);
+    console.log(container);
   });
 });
