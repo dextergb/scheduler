@@ -6,7 +6,7 @@ import {
   waitForElement,
   fireEvent,
   getByText,
-  prettyDOM,
+  // prettyDOM,
   getAllByTestId,
   getByAltText,
   getByPlaceholderText,
@@ -41,17 +41,13 @@ describe("Application", () => {
     fireEvent.change(getByPlaceholderText(appointment, /enter student name/i), {
       target: { value: "Lydia Miller-Jones" },
     });
-    fireEvent.click(getByAltText(appointment, "Sylvia Palmer"));
 
+    fireEvent.click(getByAltText(appointment, "Sylvia Palmer"));
     fireEvent.click(getByText(appointment, "Save"));
 
-    expect(getByText(appointment, "SAVING")).toBeInTheDocument();
+    expect(getByText(appointment, "Saving")).toBeInTheDocument();
 
     await waitForElement(() => getByText(appointment, "Lydia Miller-Jones"));
-
-    const day = getAllByTestId(container, "day").find((day) =>
-      queryByText(day, "Monday")
-    );
 
     const day = getAllByTestId(container, "day").find((day) =>
       queryByText(day, "Monday")
