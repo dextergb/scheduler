@@ -31,6 +31,7 @@ export default function Application(props) {
   }, []);
 
   function bookInterview(id, interview) {
+    const updating = state.appointments[id].interview;
     const axiosPromise = axios
       .put(`/api/appointments/${id}`, { interview })
       .then(() => {
@@ -42,18 +43,31 @@ export default function Application(props) {
           ...state.appointments,
           [id]: appointment,
         };
+        const currentDay = state.days.findIndex(
+          (element) => element.name === state.day
+        );
+        const day = {
+          ...state.days[currentDay],
+          spots: state.days[currentDay].spots - (updating ? 0 : 1),
+        };
+        const days = [...state.days];
+
+        days.splice(currentDay, 1, day);
+
         setState({
           ...state,
           appointments,
+          days,
         });
-      })
-      .then(() => {
-        return axios.get("/api/days");
-      })
-      //Updates spots remaining
-      .then((res) => {
-        setState((prev) => ({ ...prev, days: res.data }));
       });
+    // .then(() => {
+    //   return axios.get("/api/days");
+    // })
+    // //Updates spots remaining
+    // .then((res) => {
+    //   console.log("Res data: ", res.data);
+    //   setState((prev) => ({ ...prev, days: res.data }));
+    // });
     return axiosPromise;
   }
 
@@ -69,9 +83,21 @@ export default function Application(props) {
           ...state.appointments,
           [id]: appointment,
         };
+        const currentDay = state.days.findIndex(
+          (element) => element.name === state.day
+        );
+        const day = {
+          ...state.days[currentDay],
+          spots: state.days[currentDay].spots + 1,
+        };
+        const days = [...state.days];
+
+        days.splice(currentDay, 1, day);
+
         setState({
           ...state,
           appointments,
+          days,
         });
       })
       .then(() => {
