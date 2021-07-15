@@ -1,6 +1,6 @@
 !["Interview Scheduler Logo"](docs/logo.png)
 
-### Interview Scheduler is a React application that allows users to book and cancel interviews in real time!
+## Interview Scheduler is a React application that allows users to book and cancel interviews in real time!
 
 ## Skills on Display
 
@@ -33,7 +33,8 @@
 
 1. Install dependencies using the `npm install` command.
 2. Run the [scheduler-api](https://github.com/dextergb/scheduler-api) using the `npm start` command in scheduler-api.
-3. Run the Webpack Development Server using the `npm start` command in scheduler. The app will be served at <http://localhost:8000/>.
+3. Run the Webpack Development Server using the `npm start` command in scheduler.
+   The app will be served at <http://localhost:8000/>.
 
 ### Running Jest Test Framework
 
@@ -46,3 +47,19 @@ npm test
 ```sh
 npm run storybook
 ```
+
+### Dependencies
+
+- "@babel/core": "^7.4.3",
+- "@storybook/addon-actions": "^5.0.10",
+- "@storybook/addon-backgrounds": "^5.0.10",
+- "@storybook/addon-links": "^5.0.10",
+- "@storybook/addons": "^5.0.10",
+- "@storybook/react": "^5.0.10",
+- "@testing-library/jest-dom": "^4.0.0",
+- "@testing-library/react": "^8.0.7",
+- "@testing-library/react-hooks": "^7.0.1",
+- "babel-loader": "^8.0.5",
+- "node-sass": "^4.14.0",
+- "prop-types": "^15.7.2",
+- "react-test-renderer": "^16.14.0"
