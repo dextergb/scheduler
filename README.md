@@ -1,3 +1,5 @@
+!["Interview Scheduler Logo"](docs/logo.png)
+
 # Interview Scheduler
 
 ## Setup
