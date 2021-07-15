@@ -26,6 +26,8 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
+  /**----------onSave function----------**/
+
   function onSave(name, interviewer) {
     const interview = {
       student: name,
@@ -37,6 +39,8 @@ export default function Appointment(props) {
       .then(() => transition(SHOW))
       .catch((error) => transition(ERROR_SAVE, true));
   }
+
+  /**----------Destroy function----------**/
 
   function destroy(event) {
     transition(DELETE, true);

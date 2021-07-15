@@ -11,6 +11,8 @@ export default function Application(props) {
 
   const setDay = (day) => setState({ ...state, day });
 
+  /**----------useEffect----------**/
+
   useEffect(() => {
     Promise.all([
       axios.get("/api/days"),
@@ -29,6 +31,8 @@ export default function Application(props) {
         console.log(error);
       });
   }, []);
+
+  /**----------bookInterview function----------**/
 
   function bookInterview(id, interview) {
     const updating = state.appointments[id].interview;
@@ -62,6 +66,8 @@ export default function Application(props) {
       });
     return axiosPromise;
   }
+
+  /**----------cancelInterview function----------**/
 
   function cancelInterview(id) {
     const axiosPromise = axios.delete(`/api/appointments/${id}`).then(() => {

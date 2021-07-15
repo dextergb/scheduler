@@ -1,3 +1,5 @@
+/**----------getAppointmentsForDay function----------**/
+
 export function getAppointmentsForDay(state, day) {
   const selectedDay = state.days.find((d) => d.name === day);
   if (state.days.length === 0 || !selectedDay) {
@@ -10,6 +12,8 @@ export function getAppointmentsForDay(state, day) {
   return appointments;
 }
 
+/**----------getInterview function----------**/
+
 export function getInterview(state, interview) {
   if (interview === null) {
     return null;
@@ -20,6 +24,8 @@ export function getInterview(state, interview) {
   };
   return interviewObject;
 }
+
+/**----------getInterviewersForDay function----------**/
 
 export function getInterviewersForDay(state, day) {
   const selectedDay = state.days.find((d) => d.name === day);
