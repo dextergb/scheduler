@@ -2,6 +2,8 @@
 
 ## Interview Scheduler is a React application that allows users to book and cancel interviews in real time!
 
+!["Interview Scheduler gif"](docs/interview_scheduler_gif.gif)
+
 ## Skills on Display
 
 - [x] React
