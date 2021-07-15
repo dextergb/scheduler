@@ -35,13 +35,13 @@
 2. Run the [scheduler-api](https://github.com/dextergb/scheduler-api) using the `npm start` command in scheduler-api.
 3. Run the Webpack Development Server using the `npm start` command in scheduler. The app will be served at <http://localhost:8000/>.
 
-# Running Jest Test Framework
+### Running Jest Test Framework
 
 ```sh
 npm test
 ```
 
-# Running Storybook Visual Testbed
+### Running Storybook Visual Testbed
 
 ```sh
 npm run storybook
